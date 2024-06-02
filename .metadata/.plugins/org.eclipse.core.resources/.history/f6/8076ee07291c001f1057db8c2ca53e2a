@@ -1,0 +1,65 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+		
+	
+	<%
+	String name=request.getParameter("uname");
+	String numstr1=request.getParameter("num1");
+	String numstr2=request.getParameter("num2");
+	String operation=request.getParameter("operation");
+	String result="";
+	
+	if(numstr1!=null && numstr2!=null && operation !=null){
+		try{
+			double num1=Double.parseDouble(numstr1);
+			double num2=Double.parseDouble(numstr2);
+			double calresult=0;
+			
+			if(operation.equals("Add")){
+				calresult=num1+num2;
+				
+			}
+			else if(operation.equals("Sub")){
+				calresult=num1-num2;
+			}
+			else if(operation.equals("Mul")){
+				calresult=num1*num2;
+			}
+			else if(operation.equals("Div")){
+				if(num2!=0){
+				calresult=num1/num2;
+				}else{
+					result="Cannot divide by zero.";
+				}
+			
+			}
+			
+			if(result.isEmpty()){
+				result="Good Morning "+name+"! The Result is " + String.valueOf(calresult);
+			}
+		}catch(NumberFormatException e){
+			result="Invalid Input.Please enter valid numbers. ";
+		}
+		
+	}
+	
+	%>
+	
+	<% if (!result.isEmpty()) { %>
+	
+	<p><%=result %></p>
+	
+	<% } %>
+	
+		
+		
+		
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head xmlns:th="www.thymeleaf.org">
+<meta charset="ISO-8859-1">
+<title>Cart</title>
+</head>
+<body>
+
+
+	<div class="container">
+	<div class="row fs-1 text-center">
+		<p>Shopping Cart</p>
+	</div>
+	<div class="row mb-5">
+		<div class="col-8">
+			<div class="container">
+				<div class="row m-3 border-top border-bottom fs-5">
+					<div class="col">ITEMS</div>
+					<div class="col">PRICE</div>
+					<div class="col">QUANTITY</div>
+					<div class="col">SUBTOTAL</div>
+				</div>
+				<div class="row m-3 border-bottom">
+					<div class="col"">
+						<h5 th:text="${cartitem.item.name}"></h5>
+						<p th:text="${cartitem.item.description}"></p>
+						<img th:src="@{/uploads/items/{id}/imgName(id=$${item.id}, imageName=${cartitem.item.imgname})}" >	</div>
+					<div class="col align-self-center">
+						</div>
+					<div class="col align-self-center">
+						<input type="text" th:text="${cartitem.quantity}">
+					</div>
+					<div class="col align-self-center">SUBTOTAL</div>
+				</div>
+
+				<div class="col-4">
+					<div class="container">
+						<div class="row m-3 border-top border-bottom fw-bold">
+							<div class="col text-center fs-3">ORDER SUMMARY</div>
+						</div>
+						<div class="row m-3 border-bottom fw-bold">
+							<div class="col text-center fs-6">
+								<p>Total</p>
+							</div>
+							<div class="col fs-6 text-end">
+								<p id="cartTotal" ></p>
+							</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

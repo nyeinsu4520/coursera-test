@@ -1,0 +1,22 @@
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ItemserviceImpl implements ItemService {
+
+	    @Autowired
+	    private ItemRepository1 itemRepository1;
+
+	    @Override
+	    public void save(Item1 item1) {
+	        itemRepository1.save(item1);
+	    }
+
+	    @Override
+	    public List<Item1> findAll() {
+	        return itemRepository1.findAll();
+	    }
+	}
+

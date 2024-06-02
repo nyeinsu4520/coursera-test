@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;BookLink/bootstrap-5.3.3-dist&apos;" deleteContents="false" description="Delete resource &apos;BookLink/bootstrap-5.3.3-dist&apos;" element1="/BookLink/bootstrap-5.3.3-dist" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1716782605765"/>
+</session>

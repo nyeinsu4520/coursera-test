@@ -1,0 +1,39 @@
+package com.example.demo;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+public class MemberController {
+	
+	@Autowired
+	private MemberRepository memberRepo;
+	
+	
+	@GetMapping("/members")
+	public String viewMember(Model model) {
+		
+		List<Member> memberList=memberRepo.findAll();
+		model.addAttribute("memberList",memberList);
+		return "ViewMember";
+	}
+	
+	@GetMapping("/member/add")
+	public String addMember(Model model) {
+		model.addAttribute("member",new Member());
+		
+		
+		return "add_member";
+	}
+	
+	@PostMapping("/member/save")
+	public String saveMember(Member member) {
+		memberRepo.save(member);
+		return "redirect:/members";
+	}
+}

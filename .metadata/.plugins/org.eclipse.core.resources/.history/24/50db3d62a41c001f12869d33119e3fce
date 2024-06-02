@@ -1,0 +1,34 @@
+package com.example.demo;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+public class ItemController {
+	@Autowired
+	private ItemRepository itemRepo;
+	
+	@GetMapping("/view")
+	public String viewItems(Model model) {
+		List<Item> itemList= itemRepo.findAll();
+		model.addAttribute("itemList",itemList);
+		return "view_items";
+	}
+	
+	@GetMapping("/add")
+	public String addItem(Model model) {
+		model.addAttribute("item",new Item());
+		return "add_item";
+	}
+	
+	@PostMapping("/save")
+	public String saveItem(Item item) {
+		itemRepo.save(item);
+		return "redirect:/view";
+	}
+}

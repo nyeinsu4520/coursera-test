@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Registration Form</title>
+</head>
+<body style=background-color:pink>
+	<h1 style=margin:auto;text-align:center >Student Registration Form</h1>
+	<h4 style=margin-left:50px>Please fill student information:</h4>
+	<form action="StudentRegistration" method="post">
+		<table style=margin-left:50px>
+		<tr>
+		<td><label>Student Name:* </label></td>
+		<td colspan=2><input type="text" name="name"></td>
+		</tr>
+		<tr>
+		<td><label>E-Mail:* </label></td>
+		<td colspan=2><input type="text" name="email"></td>
+		</tr>
+		<tr>
+		<td><label>Address:* </label></td>
+		<td><textarea name="address"></textarea></td>
+		</tr>
+		<tr>
+		<td><label>Mobile Number:* </label></td>
+		<td><input type="text" name="phno"></td>
+		</tr>
+		<tr>
+		<td>
+		<label>Date of Birth:* </label></td>
+		<td><input type="text" name="dob"></td>
+		</tr>
+		<tr>
+		<td><label>Gender: </label><td>
+			<input checked type="radio" name="gender" value="Male"> Male
+			<input type="radio" name="gender" value="Female"> Female
+		</tr>
+		<tr>
+		<td><label for="year">Year:* </label></td>
+		<td><select id="year" name="year">
+  			<option value="First Year">First Year</option>
+  			<option value="Second Year">Second Year</option>
+  			<option value="Third Year">Third Year</option>
+  			<option value="Fourth Year">Fourth Year</option>
+  			<option value="Fifth Year">Fifth Year</option>
+		</select></td>
+		</tr>
+		<tr>
+		<td><label>Hobby:* </label></td>
+			<td>
+                <input type="checkbox" name="hobbies" value="Reading"> Reading
+                <input type="checkbox" name="hobbies" value="Football"> Football
+                <input type="checkbox" name="hobbies" value="Tennis"> Tennis
+            </td>
+		</tr>
+		</table>
+			<input style=margin-left:100px type="submit" value="Register">
+			<button type=button onclick=window.history.back();>Cancel</button>
+	</form>
+</body>
+	
+</html>

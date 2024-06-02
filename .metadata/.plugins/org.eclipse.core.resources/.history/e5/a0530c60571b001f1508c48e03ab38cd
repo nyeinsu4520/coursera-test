@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<%
+		Integer num1=Integer.valueOf(request.getParameter("num1"));
+		Integer num2=Integer.valueOf(request.getParameter("num2"));
+		String operation=request.getParameter("operation");
+		Integer result=0;
+		
+		if(num1!=null && num2!=null && operation !=null){
+			try{
+				int number1=Integer.parseInt(num1);
+				int number2=Integer.parseInt(num2);
+				int calresult=0;
+				
+				if(operation.equals("+")){
+					calresult=num1+num2;
+					
+				}
+				else if(operation.equals("-")){
+					calresult=num1-num2;
+				}
+				else if(operation.equals("*")){
+					calresult=num1*num2;
+				}
+				else if(operation.equals("/")){
+					if(num2!=0){
+					calresult=num1/num2;
+					}else{
+						result="Cannot divide by zero.";
+					}
+				
+				}
+				
+				if(result.isEmpty()){
+					result=String.valueOf(calresult);
+				}
+			}catch(NumberFormatException e){
+				result="Invalid Input.Please enter valid numbers. ";
+			}
+		}
+	
+	
+	%>
+	
+</body>
+</html>

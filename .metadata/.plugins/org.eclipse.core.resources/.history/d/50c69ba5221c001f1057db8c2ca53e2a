@@ -1,0 +1,21 @@
+package com.example.demo;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class ItemController {
+	@Autowired
+	private ItemRepository itemRepo;
+	
+	@GetMapping("/items")
+	public String viewItems(Model model) {
+		List<Item> itemList= itemRepo.findAll();
+		model.addAttribute("itemList",itemList);
+		return "view_items";
+	}
+}

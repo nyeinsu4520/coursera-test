@@ -1,0 +1,84 @@
+package test;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+/**
+ * Servlet implementation class bookorderservlet
+ */
+public class bookorderservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public bookorderservlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String bookcategory=request.getParameter("bookcategory");
+		String title=request.getParameter("title");
+		String author=request.getParameter("author");
+		String edition=request.getParameter("edition");
+		String year=request.getParameter("year");
+		String isbn=request.getParameter("isbn");
+		
+		HttpSession session=request.getSession();
+		Integer orderCount=(Integer) session.getAttribute("orderCount");
+		
+		if(orderCount==null) {
+			orderCount=0;
+		}
+		
+		orderCount++;
+		session.setAttribute("orderCount", orderCount);
+		
+		String bookID = "bk" + orderCount;
+		
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		
+		out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Order Confirmation</title>");
+        out.println("<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\">");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<div class='container mt-5 bg-pink'>");
+        out.println("<p>BookID : "+ bookID+"</p>");
+        out.println("<p>Category : " + bookcategory+ "!</p>");
+        out.println("<p>Book Title: " + title + "</p>");
+        out.println("<p>Book Author: " + author + "</p>");
+        out.println("<p>Book Edition: " + edition + "</p>");
+        out.println("<p>Year: " + year + "</p>");
+        out.println("<p>ISBN: " + isbn + "</p>");
+        out.println("*****************************************************");
+        out.println("</div>");
+        out.println("</body>");
+        out.println("</html>");
+	}
+	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

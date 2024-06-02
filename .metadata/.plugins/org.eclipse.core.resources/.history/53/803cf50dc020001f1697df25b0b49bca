@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head xmlns:th="http://www.thymeleaf.org">
+<meta charset="ISO-8859-1">
+<title>Cart</title>
+<link href="/bootstrap/css/bootstrap.min.css">
+<script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+
+	<div th:replace="@{fragment/header1}"></div>
+	<div class="container">
+	<div class="row">
+		<h1 align="center">Shopping Cart</h1>
+	</div>
+	<div class="row mb-5">
+		<div class="col-8">
+			<div class="row">
+				<div class="row m-3 border-top border-bottom fs-5">
+					<div class="col">ITEMS</div>
+					<div class="col">PRICE</div>
+					<div class="col">QUANTITY</div>
+					<div class="col">SUBTOTAL</div>
+				</div>
+				<div class="row" th:each="cartItem:${cartItemList}">
+					<div class="col">
+						<h5 th:text="${cartItem.item.name}"></h5>
+						<p th:text="${cartItem.item.description}"></p>
+						<img width="100px" th:src="@{/uploads/items/{id}/{imageName} (id=${cartItem.item.id},imageName=${cartItem.item.imgname})}" >	
+						<input type="text" th:text="${cartItem.item.price}">
+					</div>
+					<div class="col">
+						<form th:action="@{/cart/update/{id} (id=${cartItem.id})}" method="post">
+							<input type="text" name="quantity" th:text="${cartItem.quantity}">
+							<input type="submit" value="Update Quantity">
+						</form>
+						<a th:href="@{/cart/remove/{id} (id=${cartItem.id})}" class="btn">Remove Item</a>
+					</div>
+					<div class="col align-self-center">
+						<h3 th:text="${cartItem.subtotal}"></h3>
+					</div>
+				</div>
+			</div>
+				<div class="col-4">
+						<div class="row m-3 border-top border-bottom fw-bold">
+							<div class="col text-center fs-3">ORDER SUMMARY</div>
+						</div>
+						<div class="row m-3 border-bottom fw-bold" th:each="cartItem:${cartItemList}">
+							<div class="col text-center fs-6">
+								<p th:text="${cartItem.item.name}+' x ' +${cartItem.quantity}"></p>
+							</div>
+							<div class="col fs-6 text-end">
+								<p id="cartTotal" th:text="${cartItem.subtotal}" ></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<h2>TOTAL</h2>
+							</div>
+							<div class="col">
+								<h2 th:text="${total}"></h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

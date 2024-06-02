@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Staff Registration Form</title>
+</head>
+<body style=background-color:pink>
+	<h1 style=margin:auto;text-align:center >Staff Registration Form</h1>
+	<h4 style=margin-left:50px>Please fill staff information:</h4>
+	<form action="staffRegistration" method="post">
+		<table style=margin-left:50px>
+		<tr>
+		<td><label>Staff Name:* </label></td>
+		<td colspan=2><input type="text" name="name"></td>
+		</tr>
+		<tr>
+		<td><label>E-Mail:* </label></td>
+		<td colspan=2><input type="text" name="email"></td>
+		</tr>
+		<tr>
+		<td><label>Address:* </label></td>
+		<td><textarea name="address"></textarea></td>
+		</tr>
+		<tr>
+		<td><label>Mobile Number:* </label></td>
+		<td><input type="text" name="phno"></td>
+		</tr>
+		<tr>
+		<td>
+		<label>Date of Birth:* </label></td>
+		<td><input type="text" name="dob"></td>
+		</tr>
+		<tr>
+		<td><label>Gender: </label><td>
+			<input checked type="radio" name="gender" value="Male"> Male
+			<input type="radio" name="gender" value="Female"> Female
+		</tr>
+		<tr>
+		<td><label for="rank">Rank:* </label></td>
+		<td><select id="rank" name="rank">
+  			<option value="Lecturer">Lecturer</option>
+ 			<option value="Assistant">Assistant</option>
+		</select></td>
+		</tr>
+		<tr>
+		<td><label for="department">Department:* </label></td>
+		<td><select id="department" name="department">
+  			<option value="Software">Software</option>
+ 			<option value="education">Education</option></select></td>
+		</tr>
+		<tr>
+		<td><label>Teaching Subject:* </label></td>
+			<td>
+                <input type="checkbox" name="subjects" value="J2EE"> J2EE
+                <input type="checkbox" name="subjects" value="J2SE"> J2SE
+                <input type="checkbox" name="subjects" value="OS"> OS
+                <input type="checkbox" name="subjects" value="DBMS"> DBMS
+            </td>
+		</tr>
+		</table>
+			<input style=margin-left:100px type="submit" value="Register">
+			<button type=button onclick=window.history.back();>Cancel</button>
+	</form>
+</body>
+</html>

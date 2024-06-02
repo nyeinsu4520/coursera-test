@@ -1,0 +1,24 @@
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+public class MemberDetailsService implements UserDetailsService{
+	
+	@Autowired
+	MemberRepository memberRepo;
+	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
+	Member member=memberRepo.findByUserName(username);
+	if(member==null) {
+		throw new UsernameNotFoundException("Could not find user!");
+	}
+	
+		MemberDetails memberDetails=new MemberDetails(member);
+		
+		return memberDetails;
+	}
+}

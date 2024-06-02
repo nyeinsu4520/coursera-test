@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="./static/bootstrap/css/bootstrap.min.css" type="stylesheet">
+<script type="text/javascript" src="./static/bootstrap/js/bootstrap.bundle.js"></script>
+</head>
+<body>
+	<table class="table table-success table-hover" border="1">
+	<tr>
+		<th>Item</th>
+		<th>Image</th>
+		<th>Price</th>
+	</tr>
+		<tr>
+		<td>Pencil</td>
+		<td><img src="./image/pencil.jpg" width="70px"></td>
+		<td>500</td>
+	</tr>
+		<tr>
+		<td>Crayon</td>
+		<td><img src="./image/crayon.jpg" width="70px"></td>
+		<td>2000</td>
+	</tr>
+	</table>
+</body>
+</html>

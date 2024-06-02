@@ -1,0 +1,102 @@
+package com.example.demo;
+
+import java.security.Principal;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class CartItemController {
+	@Autowired
+	private CartItemRepository cartItemRepository;
+
+	@Autowired
+	private ItemRepository itemRepository;
+
+	@Autowired
+	private MemberRepository memberRepository;
+
+	@GetMapping("/cart")
+	public String showCart(Model model, Principal principal) {
+		
+		MemberDetails memberLoggedIn=(MemberDetails) SecurityContextHolder.getContext();
+		int loggedInID=memberLoggedIn.getMember().getId();
+		
+		List<CartItem> cartItemList= cartItemRepository.findAllByMemberId(loggedInID);
+		
+		model.addAttribute("cartItemList",cartItemList);
+		
+
+		return "Cart";
+
+	}
+
+	@PostMapping("/cart/add/{itemId}")
+	public String addToCart(@PathVariable("itemId") int itemId, @RequestParam("quantity") int quantity,
+			Principal principal) {
+		// Get currently logged in user
+		
+
+
+		// Check in the cartItemRepository if item was previously added by user.
+		// Hint: we will need to write a new method in the CartItemRepository
+
+		
+
+		// if the item was previously added, then we get the quantity that was
+		// previously added and increase that
+		// save the CartItem object back to the repository
+
+		
+
+		// if the item was NOT previously added, then prepare the item and member
+		// objects
+
+		
+
+			
+
+		// Create a new CartItem object
+
+			
+
+		// Set the item and member as well as the new quantity in the new object
+
+			
+
+		// Save the new CartItem object to the repository
+
+			
+	
+		return "redirect:/Cart";
+
+	}
+
+	@PostMapping("/cart/update/{id}")
+	public String updateCart(@PathVariable("id") int cartItemId, @RequestParam("qty") int qty) {
+
+		// Get cartItem object by cartItem's id
+
+		// Set the quantity of the cartItem object retrieved
+
+		// Save the cartItem back to the cartItemRepository
+
+		return "redirect:/Cart";
+	}
+
+	@GetMapping("/cart/remove/{id}")
+	public String removeCart(@PathVariable("id") int cartItemId) {
+
+		// Remove item from cartItemRepository
+
+		return "redirect:/Cart";
+	}
+
+}
