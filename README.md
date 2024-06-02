@@ -1,2 +1,2 @@
-# coursera-test
+booklink
 Cousera test repository
